@@ -1,0 +1,102 @@
+﻿@model IEnumerable<ProjektMVC.Models.AW.Racun>
+
+@{
+    ViewBag.Title = "Racuni";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Racuni</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-striped table-hover table-responsive">
+    <thead>
+        <tr>
+            <th>
+                Datum izdavanja
+            </th>
+            <th>
+                Broj računa
+            </th>
+            <th>
+                Komentar
+            </th>
+            <th>
+                Ime komercijalista
+            </th>
+            <th>
+                Prezime komercijalista
+            </th>
+            <th>
+                Stalni zaposlenk
+            </th>
+            <th>
+                Tip kartice
+            </th>
+            <th>
+                Broj kartice
+            </th>
+            <th>
+                Mjesec isteka
+            </th>
+            <th>
+                Godina isteka
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DatumIzdavanja)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BrojRacuna)
+                </td>
+                <td>
+                    @if (item.Komentar == "")
+                    {
+                        @: Nema komentara.
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(modelItem => item.Komentar)
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KomercijalistIme)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KomercijalistPrezime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StalniZaposlenik)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TipKartice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BrojKartice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IstekMjesec)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IstekGodina)
+                </td>
+                <td>
+                    @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                      @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                      @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+                    @Html.ActionLink("Stavke", "Stavke", new { id = item.IDRacun})
+
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>

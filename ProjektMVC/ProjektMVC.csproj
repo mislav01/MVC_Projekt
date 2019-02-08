@@ -186,7 +186,9 @@
     <Compile Include="Models\AW\Drzava.cs" />
     <Compile Include="Models\AW\Grad.cs" />
     <Compile Include="Models\AW\Kupac.cs" />
+    <Compile Include="Models\AW\Racun.cs" />
     <Compile Include="Models\AW\Repository.cs" />
+    <Compile Include="Models\AW\Stavka.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -249,9 +251,12 @@
     <Content Include="Views\Projekt\Gradovi.cshtml" />
     <Content Include="Views\Projekt\Index.cshtml" />
     <Content Include="Views\Projekt\Kupci.cshtml" />
+    <Content Include="Views\Projekt\Racuni.cshtml" />
+    <Content Include="Views\Projekt\Stavke.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\asdf\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

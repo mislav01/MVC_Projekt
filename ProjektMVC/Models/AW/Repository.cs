@@ -26,6 +26,48 @@ namespace ProjektMVC.Models.AW
             }
         }
 
+        internal static IEnumerable<Stavka> GetStavka(int racunID)
+        {
+            ds = SqlHelper.ExecuteDataset(cs, "GetStavka", racunID);
+
+            foreach (DataRow row in ds.Tables[0].Rows)
+            {
+                yield return new Stavka
+                {
+                    IDStavka = (int)row["IDStavka"],
+                    RacunID = (int)row["RacunID"],
+                    Kolicina = (short)row["Kolicina"],
+                    ProizvodID = (int)row["ProizvodID"],
+                    CijenaPoKomadu = (decimal)row["CijenaPoKomadu"],
+                    Popust = (decimal)(row["PopustUPostocima"]) ,
+                    UkupnaCijena = (decimal)row["UkupnaCijena"]
+                };
+            }
+        }
+
+        internal static IEnumerable<Racun> GetRacunKomercijalistKartica(int kupacID)
+        {
+            ds = SqlHelper.ExecuteDataset(cs, "GetRacunKomercijalistKartica", kupacID);
+
+            foreach (DataRow row in ds.Tables[0].Rows)
+            {
+                yield return new Racun
+                {
+                    IDRacun = (int)row["IDRacun"],
+                    DatumIzdavanja = (DateTime)row["DatumIzdavanja"],
+                    BrojRacuna = row["BrojRacuna"].ToString(),
+                    Komentar = row["Komentar"].ToString(),
+                    KomercijalistIme = row["Ime"].ToString(),
+                    KomercijalistPrezime = row["Prezime"].ToString(),
+                    StalniZaposlenik = (bool)row["StalniZaposlenik"],
+                    TipKartice = row["Tip"].ToString(),
+                    BrojKartice = row["Broj"].ToString(),
+                    IstekMjesec = (byte)row["IstekMjesec"],
+                    IstekGodina = (short)row["IstekGodina"]
+                };
+            }
+        }
+
         internal static IEnumerable<Kupac> GetKupacByGradID(int gradID)
         {
             ds = SqlHelper.ExecuteDataset(cs, "GetKupacByGradID", gradID);
