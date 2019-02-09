@@ -31,8 +31,8 @@ CREATE PROCEDURE GetRacunKomercijalistKartica
 	@KupacID INT
 AS
 BEGIN
-	SELECT r.IDRacun, r.DatumIzdavanja, r.BrojRacuna, r.Komentar, k.Ime, k.Prezime, 
-	k.StalniZaposlenik, kk.Tip, kk.Broj, kk.IstekMjesec, kk.IstekGodina FROM Racun as r 
+	SELECT r.IDRacun, r.DatumIzdavanja, r.BrojRacuna, r.Komentar, k.IDKomercijalist, k.Ime, k.Prezime, 
+	k.StalniZaposlenik, kk.IDKreditnaKartica, kk.Tip, kk.Broj, kk.IstekMjesec, kk.IstekGodina FROM Racun as r 
 	INNER JOIN
 	Komercijalist as k 
 	ON r.KomercijalistID = k.IDKomercijalist
@@ -44,11 +44,21 @@ END
 
 GO
 
-CREATE PROCEDURE GetStavka
+CREATE PROCEDURE GetStavkaProizvodPotkategorijaKategorija
 	@RacunID INT
 AS
 BEGIN
-	SELECT * FROM Stavka Where @RacunID = RacunID
+	SELECT s.IDStavka, s.Kolicina, s.CijenaPoKomadu, s.PopustUPostocima, s.UkupnaCijena,
+	p.IDProizvod, p.Naziv, p.BrojProizvoda, p.Boja, p.MinimalnaKolicinaNaSkladistu, p.CijenaBezPDV, pk.IDPotkategorija,
+	pk.Naziv, k.IDKategorija, k.Naziv FROM Stavka as s 
+	INNER JOIN
+	Proizvod as p 
+	ON s.ProizvodID = p.IDProizvod
+	INNER JOIN 
+	Potkategorija as pk
+	ON p.PotkategorijaID = pk.IDPotkategorija
+	INNER JOIN
+	Kategorija as k
+	ON pk.KategorijaID = k.IDKategorija
+	WHERE @RacunID = RacunID
 END
-
-GO

@@ -20,6 +20,6 @@ namespace ProjektMVC.Controllers
 
         public ActionResult Racuni(int id) => View(Repository.GetRacunKomercijalistKartica(id));
 
-        public ActionResult Stavke(int id) => View(Repository.GetStavka(id));
+        public ActionResult Stavke(int id) => View(Repository.GetStavkaProizvodPotkategorijaKategorija(id));
     }
 }

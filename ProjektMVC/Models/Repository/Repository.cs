@@ -26,21 +26,41 @@ namespace ProjektMVC.Models.AW
             }
         }
 
-        internal static IEnumerable<Stavka> GetStavka(int racunID)
+        internal static IEnumerable<Stavka> GetStavkaProizvodPotkategorijaKategorija(int racunID)
         {
-            ds = SqlHelper.ExecuteDataset(cs, "GetStavka", racunID);
+            ds = SqlHelper.ExecuteDataset(cs, "GetStavkaProizvodPotkategorijaKategorija", racunID);
 
             foreach (DataRow row in ds.Tables[0].Rows)
             {
                 yield return new Stavka
                 {
                     IDStavka = (int)row["IDStavka"],
-                    RacunID = (int)row["RacunID"],
                     Kolicina = (short)row["Kolicina"],
-                    ProizvodID = (int)row["ProizvodID"],
                     CijenaPoKomadu = (decimal)row["CijenaPoKomadu"],
-                    Popust = (decimal)(row["PopustUPostocima"]) ,
-                    UkupnaCijena = (decimal)row["UkupnaCijena"]
+                    Popust = (decimal)(row["PopustUPostocima"]),
+                    UkupnaCijena = (decimal)row["UkupnaCijena"],
+
+                    Proizvod = new Proizvod
+                    {
+                        IDProizvod = (int)row["IDProizvod"],
+                        Naziv = row["Naziv"].ToString(),
+                        BrojProizvoda = row["BrojProizvoda"].ToString(),
+                        Boja = row["Boja"].ToString(),
+                        MinimalnaKolicinaNaSkladistu = (short)row["MinimalnaKolicinaNaSkladistu"],
+                        CijenaBezPDV = (decimal)row["CijenaBezPDV"]
+                    },
+
+                    Potkategorija = new Potkategorija
+                    {
+                        IDPotkategorija = (int)row["IDPotkategorija"],
+                        Naziv = row["Naziv"].ToString()
+                    },
+
+                    Kategorija = new Kategorija
+                    {
+                        IDKategorija = (int)row["IDKategorija"],
+                        Naziv = row["Naziv"].ToString()
+                    }            
                 };
             }
         }
@@ -57,13 +77,23 @@ namespace ProjektMVC.Models.AW
                     DatumIzdavanja = (DateTime)row["DatumIzdavanja"],
                     BrojRacuna = row["BrojRacuna"].ToString(),
                     Komentar = row["Komentar"].ToString(),
-                    KomercijalistIme = row["Ime"].ToString(),
-                    KomercijalistPrezime = row["Prezime"].ToString(),
-                    StalniZaposlenik = (bool)row["StalniZaposlenik"],
-                    TipKartice = row["Tip"].ToString(),
-                    BrojKartice = row["Broj"].ToString(),
-                    IstekMjesec = (byte)row["IstekMjesec"],
-                    IstekGodina = (short)row["IstekGodina"]
+
+                    Komercijalist = new Komercijalist
+                    {
+                        IDKomercijalist = (int)row["IDKomercijalist"],
+                        KomercijalistIme = row["Ime"].ToString(),
+                        KomercijalistPrezime = row["Prezime"].ToString(),
+                        StalniZaposlenik = (bool)row["StalniZaposlenik"]
+                    },
+
+                    KreditnaKartica = new KreditnaKartica
+                    {
+                        IDKreditnaKartica = (int)row["IDKreditnaKartica"],
+                        TipKartice = row["Tip"].ToString(),
+                        BrojKartice = row["Broj"].ToString(),
+                        IstekMjesec = (byte)row["IstekMjesec"],
+                        IstekGodina = (short)row["IstekGodina"]
+                    }
                 };
             }
         }

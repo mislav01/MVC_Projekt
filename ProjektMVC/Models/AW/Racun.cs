@@ -11,12 +11,7 @@ namespace ProjektMVC.Models.AW
         public DateTime DatumIzdavanja { get; set; }
         public string BrojRacuna { get; set; }
         public string Komentar { get; set; }
-        public string KomercijalistIme { get; set; }
-        public string KomercijalistPrezime { get; set; }
-        public bool StalniZaposlenik { get; set; }
-        public string TipKartice { get; set; }
-        public string BrojKartice { get; set; }
-        public byte IstekMjesec { get; set; }
-        public short IstekGodina { get; set; }
+        public Komercijalist Komercijalist { get; set; }
+        public KreditnaKartica KreditnaKartica { get; set; }
     }
 }

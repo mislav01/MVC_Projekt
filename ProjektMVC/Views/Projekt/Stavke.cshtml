@@ -14,43 +14,84 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Kolicina)
+                Količina
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CijenaPoKomadu)
+                Cijena po komadu
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Popust)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.UkupnaCijena)
+                Ukupna cijena
             </th>
-            <th></th>
+            <th>
+                Naziv proizvoda
+            </th>
+            <th>
+                Broj proizvoda
+            </th>
+            <th>
+                Boja proizvoda
+            </th>
+            <th>
+                Minimalna količina na skladištu
+            </th>
+            <th>
+                Cijena bez PDV-a
+            </th>
+            <th>
+                Naziv potkategorije
+            </th>
+            <th>
+                Naziv kategorije
+            </th>
         </tr>
     </thead>
 
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Kolicina)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CijenaPoKomadu)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Popust)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.UkupnaCijena)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kolicina)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CijenaPoKomadu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Popust)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UkupnaCijena)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Proizvod.Naziv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Proizvod.BrojProizvoda)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Proizvod.Boja)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Proizvod.MinimalnaKolicinaNaSkladistu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Proizvod.CijenaBezPDV)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Potkategorija.Naziv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kategorija.Naziv)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
         }
     </tbody>
 
