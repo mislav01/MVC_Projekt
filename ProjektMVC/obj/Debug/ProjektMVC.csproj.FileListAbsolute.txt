@@ -50,6 +50,7 @@ C:\Users\Mislav\Desktop\ProjektMVC_MislavBasic\ProjektMVC\bin\roslyn\VBCSCompile
 C:\Users\Mislav\Desktop\ProjektMVC_MislavBasic\ProjektMVC\bin\Antlr3.Runtime.dll
 C:\Users\Mislav\Desktop\ProjektMVC_MislavBasic\ProjektMVC\bin\EntityFramework.dll
 C:\Users\Mislav\Desktop\ProjektMVC_MislavBasic\ProjektMVC\bin\EntityFramework.SqlServer.dll
+C:\Users\Mislav\Desktop\ProjektMVC_MislavBasic\ProjektMVC\bin\Microsoft.ApplicationBlocks.Data.dll
 C:\Users\Mislav\Desktop\ProjektMVC_MislavBasic\ProjektMVC\bin\Microsoft.AspNet.Identity.Core.dll
 C:\Users\Mislav\Desktop\ProjektMVC_MislavBasic\ProjektMVC\bin\Microsoft.AspNet.Identity.EntityFramework.dll
 C:\Users\Mislav\Desktop\ProjektMVC_MislavBasic\ProjektMVC\bin\Microsoft.AspNet.Identity.Owin.dll
@@ -102,9 +103,7 @@ C:\Users\Mislav\Desktop\ProjektMVC_MislavBasic\ProjektMVC\bin\Microsoft.Owin.Sec
 C:\Users\Mislav\Desktop\ProjektMVC_MislavBasic\ProjektMVC\bin\System.Diagnostics.DiagnosticSource.xml
 C:\Users\Mislav\Desktop\ProjektMVC_MislavBasic\ProjektMVC\bin\Microsoft.AspNet.TelemetryCorrelation.xml
 C:\Users\Mislav\Desktop\ProjektMVC_MislavBasic\ProjektMVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\Mislav\Desktop\ProjektMVC_MislavBasic\ProjektMVC\obj\Debug\ProjektMVC.csprojAssemblyReference.cache
 C:\Users\Mislav\Desktop\ProjektMVC_MislavBasic\ProjektMVC\obj\Debug\ProjektMVC.csproj.CoreCompileInputs.cache
 C:\Users\Mislav\Desktop\ProjektMVC_MislavBasic\ProjektMVC\obj\Debug\ProjektMVC.csproj.CopyComplete
 C:\Users\Mislav\Desktop\ProjektMVC_MislavBasic\ProjektMVC\obj\Debug\ProjektMVC.dll
 C:\Users\Mislav\Desktop\ProjektMVC_MislavBasic\ProjektMVC\obj\Debug\ProjektMVC.pdb
-C:\Users\Mislav\Desktop\ProjektMVC_MislavBasic\ProjektMVC\bin\Microsoft.ApplicationBlocks.Data.dll

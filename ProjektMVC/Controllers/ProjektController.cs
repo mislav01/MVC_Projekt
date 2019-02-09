@@ -7,11 +7,9 @@ using System.Web.Mvc;
 
 namespace ProjektMVC.Controllers
 {
+    [Authorize]
     public class ProjektController : Controller
     {
-        // GET: Projekt
-        public ActionResult Index() => View();
-
         public ActionResult Drzave() => View(Repository.GetDrzave());
 
         public ActionResult Gradovi(int id) => View(Repository.GetGradByDrzavaID(id));
