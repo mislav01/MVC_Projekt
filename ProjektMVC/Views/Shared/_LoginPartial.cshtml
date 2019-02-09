@@ -7,7 +7,7 @@
 
     <ul class="nav navbar-nav navbar-right">
         <li>
-            @Html.ActionLink("Bok " + User.Identity.GetUserName() + "!", "Index", "Projekt", routeValues: null, htmlAttributes: new { title = "accountLink" })
+            @Html.ActionLink("Bok " + User.Identity.GetUserName() + "!", "Drzave", "Projekt", routeValues: null, htmlAttributes: new { title = "accountLink" })
         </li>
         <li><a href="javascript:document.getElementById('logoutForm').submit()">Odjava</a></li>
     </ul>

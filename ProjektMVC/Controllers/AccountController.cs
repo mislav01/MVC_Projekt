@@ -116,7 +116,7 @@ namespace ProjektMVC.Controllers
 
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
 
-                    return RedirectToAction("Index", "Projekt");
+                    return RedirectToAction("Drzave", "Projekt");
                 }
                 AddErrors(result);
             }
@@ -131,7 +131,7 @@ namespace ProjektMVC.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Projekt");
+            return RedirectToAction("Drzave", "Projekt");
         }
 
         protected override void Dispose(bool disposing)
@@ -176,7 +176,7 @@ namespace ProjektMVC.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Projekt");
+            return RedirectToAction("Drzave", "Projekt");
         }
     }
 }
