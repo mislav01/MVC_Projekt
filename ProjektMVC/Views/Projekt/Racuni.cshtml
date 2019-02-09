@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ProjektMVC.Models.AW.Racun>
+﻿@model IEnumerable<ProjektMVC.Models.Projekt.Racun>
 
 @{
     ViewBag.Title = "Racuni";
@@ -7,41 +7,38 @@
 
 <h2>Računi</h2>
 
-<p>
-    @Html.ActionLink("Novi račun", "Create")
-</p>
 <table class="table table-striped table-hover table-responsive">
     <thead>
         <tr>
             <th>
-                Datum izdavanja
+                @Html.DisplayNameFor(model => model.DatumIzdavanja)
             </th>
             <th>
-                Broj računa
+                @Html.DisplayNameFor(model => model.BrojRacuna)
             </th>
             <th>
-                Komentar
+                @Html.DisplayNameFor(model => model.Komentar)
             </th>
             <th>
-                Ime komercijalista
+                @Html.DisplayNameFor(model => model.Komercijalist.KomercijalistIme)
             </th>
             <th>
-                Prezime komercijalista
+                @Html.DisplayNameFor(model => model.Komercijalist.KomercijalistPrezime)
             </th>
             <th>
-                Stalni zaposlenk
+                @Html.DisplayNameFor(model => model.Komercijalist.StalniZaposlenik)
             </th>
             <th>
-                Tip kartice
+                @Html.DisplayNameFor(model => model.KreditnaKartica.TipKartice)
             </th>
             <th>
-                Broj kartice
+                @Html.DisplayNameFor(model => model.KreditnaKartica.BrojKartice)
             </th>
             <th>
-                Mjesec isteka
+                @Html.DisplayNameFor(model => model.KreditnaKartica.IstekMjesec)
             </th>
             <th>
-                Godina isteka
+                @Html.DisplayNameFor(model => model.KreditnaKartica.IstekGodina)
             </th>
         </tr>
     </thead>
@@ -88,14 +85,26 @@
                     @Html.DisplayFor(modelItem => item.KreditnaKartica.IstekGodina)
                 </td>
                 <td>
-                    @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
-                    @Html.ActionLink("Stavke", "Stavke", new { id = item.IDRacun })
-
-                </td>
+                    @if (User.IsInRole("Administrator"))
+                    {
+                    <div class="dropdown">
+                        <a class="btn btn-info dropdown-toggle" data-toggle="dropdown">Mogućnosti<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="@Url.Action("Stavke", "Projekt", new { id = item.IDRacun })">Stavke</a></li>
+                            <li><a href="@Url.Action("EditRacun", "Projekt", new { id = item.IDRacun })">Uredi</a></li>
+                        </ul>
+                    </div>
+                    } else
+                    {
+                        @Html.ActionLink("Stavke", "Stavke", new { id = item.IDRacun }, new { @class = "btn btn-info" })
+                    }
+                    </td>
             </tr>
         }
     </tbody>
 
 </table>
+
+<p>
+    @Html.ActionLink("Natrag", null, null, null, new { href = Request.UrlReferrer, @class = "btn btn-info" })
+</p>

@@ -1,17 +1,23 @@
 ﻿using Microsoft.ApplicationBlocks.Data;
+using ProjektMVC.Models.Projekt;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
-using System.Linq;
-using System.Web;
 
-namespace ProjektMVC.Models.AW
+namespace ProjektMVC.Models.Repository
 {
     public class Repository
     {
         private static DataSet ds;
+        private static DataRow dr;
         private static string cs = ConfigurationManager.ConnectionStrings["cs"].ConnectionString;
+
+        internal static object EditKupac(Kupac kupac)
+        {
+            throw new NotImplementedException();
+        }
+
         internal static IEnumerable<Drzava> GetDrzave()
         {
             ds = SqlHelper.ExecuteDataset(cs, "GetDrzave");
@@ -60,7 +66,7 @@ namespace ProjektMVC.Models.AW
                     {
                         IDKategorija = (int)row["IDKategorija"],
                         Naziv = row["Naziv"].ToString()
-                    }            
+                    }
                 };
             }
         }
@@ -114,6 +120,22 @@ namespace ProjektMVC.Models.AW
                     GradID = (int)row["GradID"]
                 };
             }
+        }
+
+        internal static Kupac GetKupacByID(int kupacID)
+        {
+            dr = SqlHelper.ExecuteDataset(cs, "GetKupacByID", kupacID).Tables[0].Rows[0];
+
+            return new Kupac
+            {
+                IDKupac = (int)dr["IDKupac"],
+                Ime = dr["Ime"].ToString(),
+                Prezime = dr["Prezime"].ToString(),
+                Email = dr["Email"].ToString(),
+                Telefon = dr["Telefon"].ToString(),
+                GradID = (int)dr["GradID"]
+            };
+
         }
 
         internal static IEnumerable<Grad> GetGradByDrzavaID(int drzavaID)

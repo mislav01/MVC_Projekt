@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ProjektMVC.Models.AW.Kupac>
+﻿@model IEnumerable<ProjektMVC.Models.Projekt.Kupac>
 
 @{
     ViewBag.Title = "Kupci";
@@ -7,9 +7,6 @@
 
 <h2>Kupci</h2>
 
-<p>
-    @Html.ActionLink("Novi kupac", "Create")
-</p>
 <table class="table table-striped table-hover">
     <thead>
         <tr>
@@ -44,14 +41,19 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Telefon)
                 </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.IDKupac */ }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                    @Html.ActionLink("Računi", "Racuni", new {  id=item.IDKupac  })
+                <td class="text-right">
+                    @if (User.IsInRole("Administrator"))
+                    {
+                        @Html.ActionLink("Uredi", "EditKupac", new { id=item.IDKupac }, new { @class = "btn btn-info" })
+                    }
+                    @Html.ActionLink("Računi", "Racuni", new { id = item.IDKupac }, new { @class = "btn btn-info" })
                 </td>
             </tr>
         }
     </tbody>
 
 </table>
+
+<p>
+    @Html.ActionLink("Natrag", null, null, null, new { href = Request.UrlReferrer, @class = "btn btn-info" })
+</p>

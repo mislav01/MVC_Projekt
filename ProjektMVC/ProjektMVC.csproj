@@ -177,22 +177,23 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AjaxController.cs" />
     <Compile Include="Controllers\ProjektController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\AW\Drzava.cs" />
-    <Compile Include="Models\AW\Grad.cs" />
-    <Compile Include="Models\AW\Kategorija.cs" />
-    <Compile Include="Models\AW\Komercijalist.cs" />
-    <Compile Include="Models\AW\KreditnaKartica.cs" />
-    <Compile Include="Models\AW\Kupac.cs" />
-    <Compile Include="Models\AW\Potkategorija.cs" />
-    <Compile Include="Models\AW\Proizvod.cs" />
-    <Compile Include="Models\AW\Racun.cs" />
+    <Compile Include="Models\Projekt\Drzava.cs" />
+    <Compile Include="Models\Projekt\Grad.cs" />
+    <Compile Include="Models\Projekt\Kategorija.cs" />
+    <Compile Include="Models\Projekt\Komercijalist.cs" />
+    <Compile Include="Models\Projekt\KreditnaKartica.cs" />
+    <Compile Include="Models\Projekt\Kupac.cs" />
+    <Compile Include="Models\Projekt\Potkategorija.cs" />
+    <Compile Include="Models\Projekt\Proizvod.cs" />
+    <Compile Include="Models\Projekt\Racun.cs" />
     <Compile Include="Models\Repository\Repository.cs" />
-    <Compile Include="Models\AW\Stavka.cs" />
+    <Compile Include="Models\Projekt\Stavka.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -238,9 +239,11 @@
     <Content Include="Views\Projekt\Kupci.cshtml" />
     <Content Include="Views\Projekt\Racuni.cshtml" />
     <Content Include="Views\Projekt\Stavke.cshtml" />
+    <Content Include="Views\Projekt\EditKupac.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Ajax\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ProjektMVC.Models.AW.Stavka>
+﻿@model IEnumerable<ProjektMVC.Models.Projekt.Stavka>
 
 @{
     ViewBag.Title = "Stavke";
@@ -7,44 +7,41 @@
 
 <h2>Stavke</h2>
 
-<p>
-    @Html.ActionLink("Nova stavka", "Create")
-</p>
 <table class="table table-striped table-hover table-responsive">
     <thead>
         <tr>
             <th>
-                Količina
+                @Html.DisplayNameFor(model => model.Kolicina)
             </th>
             <th>
-                Cijena po komadu
+                @Html.DisplayNameFor(model => model.CijenaPoKomadu)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Popust)
             </th>
             <th>
-                Ukupna cijena
+                @Html.DisplayNameFor(model => model.UkupnaCijena)
             </th>
             <th>
-                Naziv proizvoda
+                @Html.DisplayNameFor(model => model.Proizvod.Naziv)
             </th>
             <th>
-                Broj proizvoda
+                @Html.DisplayNameFor(model => model.Proizvod.BrojProizvoda)
             </th>
             <th>
-                Boja proizvoda
+                @Html.DisplayNameFor(model => model.Proizvod.Boja)
             </th>
             <th>
-                Minimalna količina na skladištu
+                @Html.DisplayNameFor(model => model.Proizvod.MinimalnaKolicinaNaSkladistu)
             </th>
             <th>
-                Cijena bez PDV-a
+                @Html.DisplayNameFor(model => model.Proizvod.CijenaBezPDV)
             </th>
             <th>
-                Naziv potkategorije
+                @Html.DisplayNameFor(model => model.Potkategorija.Naziv)
             </th>
             <th>
-                Naziv kategorije
+                @Html.DisplayNameFor(model => model.Kategorija.Naziv)
             </th>
         </tr>
     </thead>
@@ -52,49 +49,51 @@
     <tbody>
         @foreach (var item in Model)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Kolicina)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CijenaPoKomadu)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Popust)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UkupnaCijena)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Proizvod.Naziv)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Proizvod.BrojProizvoda)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Proizvod.Boja)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Proizvod.MinimalnaKolicinaNaSkladistu)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Proizvod.CijenaBezPDV)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Potkategorija.Naziv)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Kategorija.Naziv)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Kolicina)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CijenaPoKomadu)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Popust)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UkupnaCijena)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Proizvod.Naziv)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Proizvod.BrojProizvoda)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Proizvod.Boja)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Proizvod.MinimalnaKolicinaNaSkladistu)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Proizvod.CijenaBezPDV)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Potkategorija.Naziv)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Kategorija.Naziv)
+                </td>
+                <td>
+                    @if (User.IsInRole("Administrator"))
+                    {
+                        @Html.ActionLink("Uredi", "EditStavka", new { id = item.IDStavka}, new { @class = "btn btn-info"})
+                    }
+                </td>
+            </tr>
         }
     </tbody>
-
-
-
 </table>
+<p>
+    @Html.ActionLink("Natrag", null, null, null, new { href = Request.UrlReferrer, @class = "btn btn-info" })
+</p>
+
