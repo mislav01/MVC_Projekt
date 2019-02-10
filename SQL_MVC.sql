@@ -79,3 +79,19 @@ BEGIN
 	ON pk.KategorijaID = k.IDKategorija
 	WHERE @RacunID = RacunID
 END
+
+GO
+
+CREATE PROCEDURE EditKupac
+	@IDKupac INT,
+	@Ime NVARCHAR(50),
+	@Prezime NVARCHAR(50),
+	@Email NVARCHAR(50),
+	@Telefon NVARCHAR(25),
+	@GradID INT
+AS
+BEGIN
+	update Kupac set Ime = @Ime, Prezime = @Prezime, Email = @Email, Telefon = @Telefon, GradID = @GradID where IDKupac = @IDKupac
+END
+
+GO

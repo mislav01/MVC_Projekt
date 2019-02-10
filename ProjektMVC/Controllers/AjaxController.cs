@@ -17,13 +17,13 @@ namespace ProjektMVC.Controllers
         }
         public ActionResult EditKupac(Kupac kupac)
         {
-            if (Repository.EditKupac(kupac) != null)
+            if (Repository.EditKupac(kupac) != 0)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.OK);
             }
             else
             {
-                return new HttpStatusCodeResult(HttpStatusCode.NotModified);
+                return new HttpStatusCodeResult(HttpStatusCode.InternalServerError);
             }
         }
     }

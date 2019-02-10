@@ -83,12 +83,6 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Kategorija.Naziv)
                 </td>
-                <td>
-                    @if (User.IsInRole("Administrator"))
-                    {
-                        @Html.ActionLink("Uredi", "EditStavka", new { id = item.IDStavka}, new { @class = "btn btn-info"})
-                    }
-                </td>
             </tr>
         }
     </tbody>

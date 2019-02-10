@@ -44,7 +44,7 @@
                 <td class="text-right">
                     @if (User.IsInRole("Administrator"))
                     {
-                        @Html.ActionLink("Uredi", "EditKupac", new { id=item.IDKupac }, new { @class = "btn btn-info" })
+                        @Html.ActionLink("Uredi", "EditKupac", new { id = item.IDKupac }, new { @class = "btn btn-info" })
                     }
                     @Html.ActionLink("Računi", "Racuni", new { id = item.IDKupac }, new { @class = "btn btn-info" })
                 </td>

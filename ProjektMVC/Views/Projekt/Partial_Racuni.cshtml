@@ -1,0 +1,88 @@
+﻿@model IEnumerable<ProjektMVC.Models.Projekt.Racun>
+
+<table class="table table-striped table-hover table-responsive">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DatumIzdavanja)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BrojRacuna)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Komentar)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Komercijalist.KomercijalistIme)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Komercijalist.KomercijalistPrezime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Komercijalist.StalniZaposlenik)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KreditnaKartica.TipKartice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KreditnaKartica.BrojKartice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KreditnaKartica.IstekMjesec)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KreditnaKartica.IstekGodina)
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DatumIzdavanja)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BrojRacuna)
+                </td>
+                <td>
+                    @if (item.Komentar == "")
+                    {
+                        @: Nema komentara.
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(modelItem => item.Komentar)
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Komercijalist.KomercijalistIme)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Komercijalist.KomercijalistPrezime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Komercijalist.StalniZaposlenik)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KreditnaKartica.TipKartice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KreditnaKartica.BrojKartice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KreditnaKartica.IstekMjesec)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KreditnaKartica.IstekGodina)
+                </td>
+                <td>
+                    @Html.ActionLink("Stavke", "Stavke", new { id = item.IDRacun }, new { @class = "btn btn-info" })
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+

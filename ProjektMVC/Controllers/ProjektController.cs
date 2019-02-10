@@ -27,7 +27,11 @@ namespace ProjektMVC.Controllers
         }
 
         [Authorize]
-        public ActionResult Racuni(int id) => View(Repository.GetRacunKomercijalistKartica(id));
+        public ActionResult Racuni(int id)
+        {
+            return View(Repository.GetRacunKomercijalistKartica(id));
+        }
+
 
         [Authorize]
         public ActionResult Stavke(int id) => View(Repository.GetStavkaProizvodPotkategorijaKategorija(id));

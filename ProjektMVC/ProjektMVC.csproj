@@ -240,6 +240,7 @@
     <Content Include="Views\Projekt\Racuni.cshtml" />
     <Content Include="Views\Projekt\Stavke.cshtml" />
     <Content Include="Views\Projekt\EditKupac.cshtml" />
+    <Content Include="Views\Projekt\Partial_Racuni.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

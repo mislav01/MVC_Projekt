@@ -13,9 +13,10 @@ namespace ProjektMVC.Models.Repository
         private static DataRow dr;
         private static string cs = ConfigurationManager.ConnectionStrings["cs"].ConnectionString;
 
-        internal static object EditKupac(Kupac kupac)
+        internal static int EditKupac(Kupac kupac)
         {
-            throw new NotImplementedException();
+            return SqlHelper.ExecuteNonQuery
+                (cs, "EditKupac", kupac.IDKupac, kupac.Ime, kupac.Prezime, kupac.Email, kupac.Telefon, kupac.GradID);
         }
 
         internal static IEnumerable<Drzava> GetDrzave()

@@ -3,107 +3,54 @@
 @{
     ViewBag.Title = "Racuni";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
+<script>
+    window.onload = function () {
+        var tablica = @Html.Partial("Partial_Racuni", Model.OrderBy(item => item.DatumIzdavanja))
+        $("#tablica").append(tablica);
+    }
+
+    @*function sort() {
+        switch ($("select#ddlSort option:selected").attr("value")) {
+            case "dUzlazno":
+                $("#tablica").append("@Html.Partial("Partial_Racuni", Model.OrderBy(item => item.DatumIzdavanja))");
+                break;
+            case "dSilazno":
+                $("#tablica").append("@Html.Partial("Partial_Racuni", Model.OrderByDescending(item => item.DatumIzdavanja))");
+                break;
+            case "kUzlazno":
+                $("#tablica").append("@Html.Partial("Partial_Racuni", Model.OrderBy(item => item.Komercijalist.KomercijalistIme))");
+                break;
+            case "kSilazno":
+                $("#tablica").append("@Html.Partial("Partial_Racuni", Model.OrderByDescending(item => item.Komercijalist.KomercijalistIme))");
+                break;
+            case "tUzlazno":
+                $("#tablica").append("@Html.Partial("Partial_Racuni", Model.OrderBy(item => item.KreditnaKartica.TipKartice))");
+                break;
+            case "tSilazno":
+                $("#tablica").append("@Html.Partial("Partial_Racuni", Model.OrderByDescending(item => item.KreditnaKartica.TipKartice))");
+                break;
+            default:
+        }
+    }*@
+    
+</script>
 
 <h2>Računi</h2>
 
-<table class="table table-striped table-hover table-responsive">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.DatumIzdavanja)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BrojRacuna)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Komentar)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Komercijalist.KomercijalistIme)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Komercijalist.KomercijalistPrezime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Komercijalist.StalniZaposlenik)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.KreditnaKartica.TipKartice)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.KreditnaKartica.BrojKartice)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.KreditnaKartica.IstekMjesec)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.KreditnaKartica.IstekGodina)
-            </th>
-        </tr>
-    </thead>
-
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DatumIzdavanja)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BrojRacuna)
-                </td>
-                <td>
-                    @if (item.Komentar == "")
-                    {
-                        @: Nema komentara.
-                    }
-                    else
-                    {
-                        @Html.DisplayFor(modelItem => item.Komentar)
-                    }
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Komercijalist.KomercijalistIme)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Komercijalist.KomercijalistPrezime)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Komercijalist.StalniZaposlenik)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.KreditnaKartica.TipKartice)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.KreditnaKartica.BrojKartice)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.KreditnaKartica.IstekMjesec)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.KreditnaKartica.IstekGodina)
-                </td>
-                <td>
-                    @if (User.IsInRole("Administrator"))
-                    {
-                    <div class="dropdown">
-                        <a class="btn btn-info dropdown-toggle" data-toggle="dropdown">Mogućnosti<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="@Url.Action("Stavke", "Projekt", new { id = item.IDRacun })">Stavke</a></li>
-                            <li><a href="@Url.Action("EditRacun", "Projekt", new { id = item.IDRacun })">Uredi</a></li>
-                        </ul>
-                    </div>
-                    } else
-                    {
-                        @Html.ActionLink("Stavke", "Stavke", new { id = item.IDRacun }, new { @class = "btn btn-info" })
-                    }
-                    </td>
-            </tr>
-        }
-    </tbody>
-
-</table>
+<div class="col-md-2">
+    <select id="ddlSort" class="form-control" onchange="sort()">
+        <option hidden selected>Sortiraj</option>
+        <option value="dUzlazno">Datum uzlazno</option>
+        <option value="dSilazno">Datum silazno</option>
+        <option value="kUzlazno">Komercijalist uzlazno</option>
+        <option value="kSilazno">Komercijalist silazno</option>
+        <option value="tUzlazno">Tip kartica uzlazno</option>
+        <option value="tSilazno">Tip kartice silazno</option>
+    </select>
+</div>
+<div id="tablica"></div>
 
 <p>
     @Html.ActionLink("Natrag", null, null, null, new { href = Request.UrlReferrer, @class = "btn btn-info" })
