@@ -40,8 +40,6 @@
                     GradID: $("select#ddlGradovi option:selected").attr("value")
                 }
 
-                console.log(kupac);
-
                 $.ajax({
                     url: '@Url.Action(controllerName:"Ajax", actionName:"EditKupac")',
                     data: kupac,
