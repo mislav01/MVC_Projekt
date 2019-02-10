@@ -15,8 +15,8 @@ namespace ProjektMVC
 
             routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Projekt", action = "Drzave", id = UrlParameter.Optional }
+                url: "{controller}/{action}/{id}/{sort}",
+                defaults: new { controller = "Projekt", action = "Drzave", id = UrlParameter.Optional, sort = UrlParameter.Optional }
             );
         }
     }

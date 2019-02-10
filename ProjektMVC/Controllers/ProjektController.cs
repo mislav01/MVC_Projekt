@@ -1,4 +1,5 @@
-﻿using ProjektMVC.Models.Repository;
+﻿using ProjektMVC.Models.Projekt;
+using ProjektMVC.Models.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +12,6 @@ namespace ProjektMVC.Controllers
     {
         [Authorize]
         public ActionResult Drzave() => View(Repository.GetDrzave());
-        [Authorize(Roles = "Administrator")]
-        public ActionResult CreateDrzava() => View();
 
         [Authorize]
         public ActionResult Gradovi(int id) => View(Repository.GetGradByDrzavaID(id));
@@ -29,7 +28,28 @@ namespace ProjektMVC.Controllers
         [Authorize]
         public ActionResult Racuni(int id)
         {
-            return View(Repository.GetRacunKomercijalistKartica(id));
+            return View(id);
+        }
+        [Authorize]
+        public ActionResult Sort(int id, string sort)
+        {
+            switch (sort)
+            {
+                case "dUzlazno":
+                    return PartialView("Partial_Racuni", Repository.GetRacunKomercijalistKartica(id).OrderBy(item => item.DatumIzdavanja));
+                case "dSilazno":
+                    return PartialView("Partial_Racuni", Repository.GetRacunKomercijalistKartica(id).OrderByDescending(item => item.DatumIzdavanja));
+                case "kUzlazno":
+                    return PartialView("Partial_Racuni", Repository.GetRacunKomercijalistKartica(id).OrderBy(item => item.Komercijalist.KomercijalistIme));
+                case "kSilazno":
+                    return PartialView("Partial_Racuni", Repository.GetRacunKomercijalistKartica(id).OrderByDescending(item => item.Komercijalist.KomercijalistIme));
+                case "tUzlazno":
+                    return PartialView("Partial_Racuni", Repository.GetRacunKomercijalistKartica(id).OrderBy(item => item.KreditnaKartica.TipKartice));
+                case "tSilazno":
+                    return PartialView("Partial_Racuni", Repository.GetRacunKomercijalistKartica(id).OrderByDescending(item => item.KreditnaKartica.TipKartice));
+                default:
+                    return PartialView("Partial_Racuni", Repository.GetRacunKomercijalistKartica(id).OrderBy(item => item.DatumIzdavanja));
+            }
         }
 
 

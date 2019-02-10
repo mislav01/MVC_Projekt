@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ProjektMVC.Models.Projekt.Racun>
+﻿@model int
 
 @{
     ViewBag.Title = "Racuni";
@@ -7,33 +7,16 @@
 }
 <script>
     window.onload = function () {
-        var tablica = @Html.Partial("Partial_Racuni", Model.OrderBy(item => item.DatumIzdavanja))
-        $("#tablica").append(tablica);
+        var sortValue = "dUzlazno";
+        var id = @Model.ToString();
+        $("#tablica").load("/Projekt/Sort/" + id + "/" + sortValue);
     }
 
-    @*function sort() {
-        switch ($("select#ddlSort option:selected").attr("value")) {
-            case "dUzlazno":
-                $("#tablica").append("@Html.Partial("Partial_Racuni", Model.OrderBy(item => item.DatumIzdavanja))");
-                break;
-            case "dSilazno":
-                $("#tablica").append("@Html.Partial("Partial_Racuni", Model.OrderByDescending(item => item.DatumIzdavanja))");
-                break;
-            case "kUzlazno":
-                $("#tablica").append("@Html.Partial("Partial_Racuni", Model.OrderBy(item => item.Komercijalist.KomercijalistIme))");
-                break;
-            case "kSilazno":
-                $("#tablica").append("@Html.Partial("Partial_Racuni", Model.OrderByDescending(item => item.Komercijalist.KomercijalistIme))");
-                break;
-            case "tUzlazno":
-                $("#tablica").append("@Html.Partial("Partial_Racuni", Model.OrderBy(item => item.KreditnaKartica.TipKartice))");
-                break;
-            case "tSilazno":
-                $("#tablica").append("@Html.Partial("Partial_Racuni", Model.OrderByDescending(item => item.KreditnaKartica.TipKartice))");
-                break;
-            default:
-        }
-    }*@
+    function sort() {
+        var sortValue = $("select#ddlSort option:selected").attr("value");
+        var id = @Model.ToString();
+        $("#tablica").load("/Projekt/Sort/" + id + "/" + sortValue);
+}
     
 </script>
 
