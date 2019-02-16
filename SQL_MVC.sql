@@ -9,14 +9,6 @@ END
 
 GO
 
-CREATE PROCEDURE GetGradovi
-AS
-BEGIN
-	SELECT * FROM Grad
-END
-
-GO
-
 CREATE PROCEDURE GetGradByDrzavaID
 	@DrzavaID INT
 AS
